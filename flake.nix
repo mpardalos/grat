@@ -11,8 +11,8 @@
       let
         pkgs = import nixpkgs { inherit system; };
       in {
-        packages.gratgen = pkgs.callPackage ./gratgen.nix
+        packages.gratgen = pkgs.callPackage ./gratgen.nix {};
+        packages.gratchk = pkgs.callPackage ./gratchk.nix {};
       }
     );
-}
 }

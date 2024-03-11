@@ -9,10 +9,12 @@ pkgs.stdenv.mkDerivation {
     pkgs.cmake
     pkgs.boost
   ];
+  configurePhase = " ";
   buildPhase = ''
-    echo "OUT IS: $out" >&2
-    cmake . -DCMAKE_INSTALL_PREFIX=$out
-    make
+    g++ -O3 -DNDEBUG -std=c++11 -pthread -o gratgen gratgen.cpp
   '';
-  installPhase = "make install";
+  installPhase = ''
+    mkdir -p $out/bin/
+    cp gratgen $out/bin/gratgen
+  '';
 }
