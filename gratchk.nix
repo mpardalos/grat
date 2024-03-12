@@ -15,9 +15,11 @@ in
     };
     buildInputs = [
       pkgs.mlton
+      pkgs.hostname
       isabelle
     ];
     configurePhase = " ";
+    patches = [ ./no_doc.patch ];
     buildPhase = ''
       isabelle build -D.
       cd code
